@@ -1,0 +1,47 @@
+[
+  {
+    "question": "What is database normalization and why is it used?",
+    "answer": "Normalization organizes data into related tables to reduce redundancy and prevent insert, update, and delete anomalies while preserving data integrity.",
+    "followUpQuestions": ["What is the trade-off of using many normalized tables?", "Which normal form is commonly sufficient for transactional systems?"]
+  },
+  {
+    "question": "What is a functional dependency?",
+    "answer": "A functional dependency X → Y means that each value of attribute set X determines exactly one value of attribute set Y.",
+    "followUpQuestions": ["What is a trivial functional dependency?", "How are functional dependencies used when finding candidate keys?"]
+  },
+  {
+    "question": "What requirements must a relation satisfy to be in First Normal Form (1NF)?",
+    "answer": "A relation is in 1NF when every attribute contains atomic, indivisible values and there are no repeating groups or multivalued cells.",
+    "followUpQuestions": ["Why are comma-separated lists a 1NF violation?", "Can a table in 1NF still contain redundancy?"]
+  },
+  {
+    "question": "What is the condition for Second Normal Form (2NF)?",
+    "answer": "A relation must be in 1NF and every non-key attribute must depend on the whole candidate key, not just part of a composite key.",
+    "followUpQuestions": ["What is a partial dependency?", "Does a table with a single-attribute key have a partial dependency?"]
+  },
+  {
+    "question": "What is the condition for Third Normal Form (3NF)?",
+    "answer": "A relation must be in 2NF and have no transitive dependency of a non-key attribute on a candidate key; equivalently, every determinant is a superkey or the dependent attribute is prime.",
+    "followUpQuestions": ["How does 3NF remove transitive dependencies?", "Can a relation be in 3NF but not BCNF?"]
+  },
+  {
+    "question": "What is Boyce-Codd Normal Form (BCNF)?",
+    "answer": "A relation is in BCNF when, for every non-trivial functional dependency X → Y, X is a superkey.",
+    "followUpQuestions": ["Why is BCNF stricter than 3NF?", "What can be lost when decomposing a relation into BCNF?"]
+  },
+  {
+    "question": "What do the ACID properties guarantee in a database transaction?",
+    "answer": "Atomicity makes a transaction all-or-nothing, consistency preserves rules, isolation separates concurrent transactions, and durability preserves committed changes.",
+    "followUpQuestions": ["Which ACID property is most directly related to crash recovery?", "How can isolation affect performance?"]
+  },
+  {
+    "question": "What are common concurrency anomalies?",
+    "answer": "Dirty reads, non-repeatable reads, phantom reads, and lost updates can occur when concurrent transactions are not properly isolated.",
+    "followUpQuestions": ["Which anomaly reads data written by an uncommitted transaction?", "How can locking or isolation levels reduce these anomalies?"]
+  },
+  {
+    "question": "What is serializability?",
+    "answer": "Serializability means that the result of interleaved concurrent transactions is equivalent to the result of some serial execution of those transactions.",
+    "followUpQuestions": ["What is conflict serializability?", "How can a precedence graph test conflict serializability?"]
+  }
+]
