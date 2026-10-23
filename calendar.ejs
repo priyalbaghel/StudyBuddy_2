@@ -1,0 +1,11 @@
+<%- include('partials/header') %>
+<style>
+  .event-item.completed { opacity: .55; }
+  .event-item.completed b { text-decoration: line-through; }
+  .event-item.completed [data-complete] { color: #2d9a65; }
+</style>
+<div class="narrow-page calendar-page"><div class="dash-head"><div><div class="eyebrow">MAKE SPACE FOR WHAT MATTERS</div><h1>Study calendar</h1><p>Plan your deadlines, then give yourself room to breathe.</p></div><button class="button button-primary" id="addEventBtn">+ Add event</button></div><div class="calendar-layout"><section class="panel calendar-box"><div class="calendar-nav"><button id="prevMonth">←</button><h2 id="monthTitle"></h2><button id="nextMonth">→</button></div><div class="weekdays"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div><div class="days" id="calendarDays"></div></section><section class="panel event-list"><div class="panel-head"><div><h2>All events</h2><p>Keep an eye on the horizon</p></div></div><div id="eventItems"></div></section></div></div><div class="modal" id="eventModal"><div class="modal-card"><button class="modal-close" id="closeModal">×</button><div class="eyebrow">NEW STUDY MOMENT</div><h2>Add an event</h2><form id="eventForm"><label>Title<input name="title" required placeholder="e.g. Chemistry exam"></label><label>Date<input name="eventDate" type="date" required></label><label>Category<select name="category"><option>Exam</option><option>Assignment</option><option>Quiz</option><option>Revision</option></select></label><label>Description<textarea name="description" rows="3" placeholder="A little context..."></textarea></label><button class="button button-primary wide">Save event</button></form></div></div>
+<script>
+document.getElementById('eventItems').addEventListener('click',async event=>{const button=event.target.closest('[data-complete]');if(!button)return;button.disabled=true;try{const response=await fetch('/api/events/'+button.dataset.complete+'/toggle',{method:'PATCH'});if(!response.ok)throw new Error('Unable to update event');document.querySelector('[data-event-item="'+button.dataset.complete+'"]')?.classList.toggle('completed')}catch(error){console.error(error)}finally{button.disabled=false}});
+</script>
+<%- include('partials/footer') %>
