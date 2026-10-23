@@ -1,0 +1,21 @@
+node_modules/
+
+# Environment variables and local secrets
+.env
+.env.*
+!.env.example
+*.local
+
+# Local configuration and generated/runtime files
+config.local.*
+*.secret
+*.pem
+*.key
+logs/
+*.log
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+
